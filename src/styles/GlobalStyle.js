@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
     @font-face {
@@ -22,6 +22,6 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         color: inherit; /* 하위 요소에도 폰트 색상 상속 */
     }
-`
+`;
 
 export default GlobalStyle;
