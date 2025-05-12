@@ -2,7 +2,7 @@
 name: UI issue template
 about: make UI component
 title: "\U0001F484 [UI] "
-labels: ''
+labels: UI
 assignees: ''
 
 ---

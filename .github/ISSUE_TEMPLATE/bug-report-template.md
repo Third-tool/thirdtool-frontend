@@ -2,7 +2,7 @@
 name: Bug report template
 about: need to fix bug
 title: "\U0001F41B[BUG]"
-labels: ''
+labels: bug
 assignees: ''
 
 ---

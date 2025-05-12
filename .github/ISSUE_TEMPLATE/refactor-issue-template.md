@@ -2,7 +2,7 @@
 name: Refactor issue template
 about: need to refactor
 title: "\U0001F6E0️[Refactor]"
-labels: ''
+labels: Refactor
 assignees: ''
 
 ---
