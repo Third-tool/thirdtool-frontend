@@ -1,7 +1,7 @@
 ---
 name: Feature request template
 about: feature
-title: "[Feature]"
+title: "\U0001F3AF[Feature]"
 labels: ''
 assignees: ''
 
