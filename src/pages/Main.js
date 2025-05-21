@@ -4,12 +4,12 @@ import mainLogo from '../assets/images/MainLogo 1.svg';
 function Main() {
   return (
     <>
-      {/* <Wrapper>
+      <Wrapper>
         <LogoImg src={mainLogo} />
         <Title>The Third Tool</Title>
       </Wrapper>
       <SelectProject>3day project</SelectProject>
-      <SelectProject>영구 project</SelectProject> */}
+      <SelectProject>영구 project</SelectProject>
     </>
   );
 }
