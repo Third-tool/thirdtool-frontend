@@ -35,12 +35,14 @@ const CalendarWrapper = styled.div`
   background: #333;
   border-radius: 16px;
   padding: 20px;
-  height: 300px;
+  height: 360px;
+  width: 560px;
   margin-left: 28px;
 `;
 
 const StyledCalendar = styled(Calendar)`
   background-color: #333;
+  width: 560px;
   border: none;
 
   .react-calendar__navigation {

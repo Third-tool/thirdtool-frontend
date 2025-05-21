@@ -10,13 +10,13 @@ function Main() {
     <>
       <Header />
       <Margin>
+        <MenuBar />
         <Div>
-          <MenuBar />
           <Wrapper>
             <SelectProject />
           </Wrapper>
+          <CalendarView />
         </Div>
-        <CalendarView />
       </Margin>
     </>
   );
@@ -26,10 +26,13 @@ export default Main;
 
 const Margin = styled.div`
   margin-left: 50px;
-  display: flex;
 `;
 
-const Div = styled.div``;
+const Div = styled.div`
+  display: flex;
+  margin-bottom: 24px;
+`;
+
 const Wrapper = styled.div`
   display: flex;
 `;

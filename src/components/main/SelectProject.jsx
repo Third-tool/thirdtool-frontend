@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 const SelectProject = () => {
   return (
-    <div>
+    <Gap>
       <ProjectBox>
         <div>
           <ProjectType>3day 프로젝트</ProjectType>
@@ -14,16 +14,21 @@ const SelectProject = () => {
           <Period>마지막 실행:</Period>
         </div>
       </ProjectBox>
-    </div>
+    </Gap>
   );
 };
 
 export default SelectProject;
 
+const Gap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+
 const ProjectBox = styled.div`
   width: 760px;
   height: 180px;
-  margin-bottom: 24px;
   border-radius: 25px;
   background: #2f2f2f;
   display: flex;
