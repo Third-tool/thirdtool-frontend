@@ -1,12 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
-import Main from './pages/Main';
+import Main from '@pages/Main';
 import ThreeDayDeck from './pages/ThreeDayDeck';
-import ThreeDayCard from './pages/ThreeDayCard';
-import PermanentCard from './pages/PermanentCard';
-import PermanentDeck from './pages/PermanentDeck';
-import AddCard from './pages/AddCard';
-import QnA from './pages/QnA';
-
+import ThreeDayCard from '@pages/ThreeDayCard';
+import PermanentCard from '@pages/PermanentCard';
+import PermanentDeck from '@pages/PermanentDeck';
+import AddCard from '@pages/AddCard';
+import QnA from '@pages/QnA';
 function App() {
   return (
     <Routes>

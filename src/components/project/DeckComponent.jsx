@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { ArrowBtn } from '../../assets/icons/ArrowBtn';
+import { ArrowBtn } from '@assets/icons/ArrowBtn';
 
 export const DeckComponent = ({ data, projectType }) => {
   const navigate = useNavigate();

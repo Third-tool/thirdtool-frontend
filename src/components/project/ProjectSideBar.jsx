@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { DecksBtn } from '../../assets/icons/DecksBtn';
-import { HomeBtn } from '../../assets/icons/HomeBtn';
-import { ReviewBtn } from '../../assets/icons/ReviewBtn';
+import { DecksBtn } from '@assets/icons/DecksBtn';
+import { HomeBtn } from '@assets/icons/HomeBtn';
+import { ReviewBtn } from '@assets/icons/ReviewBtn';
 import { useNavigate } from 'react-router-dom';
 
 export const ProjectSideBar = ({ projectType }) => {

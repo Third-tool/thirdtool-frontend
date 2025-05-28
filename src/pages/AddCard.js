@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import leftArrow from '../assets/images/left_arrow.svg';
-import galleryLogo from '../assets/images/gallery.svg';
+import leftArrow from '@assets/images/left_arrow.svg';
+import galleryLogo from '@assets/images/gallery.svg';
 import { useRef, useState } from 'react';
 
 function AddCard() {

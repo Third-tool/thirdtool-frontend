@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import mainLogo from '../assets/images/MainLogo 1.svg';
-import leftArrow from '../assets/images/left_arrow.svg';
+import mainLogo from '@assets/images/MainLogo 1.svg';
+import leftArrow from '@assets/images/left_arrow.svg';
 
 function QnA() {
   return (
@@ -10,9 +10,7 @@ function QnA() {
         <LogoImg src={mainLogo} />
         <Title>3 Day Project</Title>
       </Header>
-
       <Divider />
-
       <Content>
         <Label>Question❓</Label>
         <Textarea placeholder='MockData' />

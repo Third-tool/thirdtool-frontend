@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import mainLogo from '../assets/images/MainLogo 1.svg';
-import Header from '../components/Header';
-import MenuBar from '../components/main/MenuBar';
-import SelectProject from '../components/main/SelectProject';
-import CalendarView from './../components/main/CalendarView';
+import Header from '@components/Header';
+import MenuBar from '@components/main/MenuBar';
+import SelectProject from '@components/main/SelectProject';
+import CalendarView from '@components/main/CalendarView';
 
 function Main() {
   return (
