@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { Plus } from '../assets/icons/Plus';
-import { CardComponent } from '../components/project/CardComponent';
-import Header from '../components/Header';
-import { ProjectSideBar } from '../components/project/ProjectSideBar';
-import { permanentMockData } from '../apis/cardMockData';
+import { Plus } from '@assets/icons/Plus';
+import { CardComponent } from '@components/project/CardComponent';
+import Header from '@components/Header';
+import { ProjectSideBar } from '@components/project/ProjectSideBar';
+import { permanentMockData } from '@apis/cardMockData';
 import { useNavigate } from 'react-router-dom';
 
 function PermanentCard() {

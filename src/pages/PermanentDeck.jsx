@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Header from '../components/Header';
-import { DeckComponent } from '../components/project/DeckComponent';
-import { Plus } from '../assets/icons/Plus';
+import Header from '@components/Header';
+import { DeckComponent } from '@components/project/DeckComponent';
+import { Plus } from '@assets/icons/Plus';
 
 function PermanentDeck() {
   return (

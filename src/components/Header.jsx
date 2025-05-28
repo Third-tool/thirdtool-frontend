@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import mainLogo from '../assets/images/MainLogo 2.svg';
+import mainLogo from '@assets/images/MainLogo 2.svg';
 import { useNavigate } from 'react-router-dom';
 
 function Header({ title }) {

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import Header from '../components/Header';
-import { ProjectSideBar } from '../components/project/ProjectSideBar';
-import { CardComponent } from '../components/project/CardComponent';
-import { Plus } from '../assets/icons/Plus';
-import { threedaycardMockData } from '../apis/cardMockData';
+import Header from '@components/Header';
+import { ProjectSideBar } from '@components/project/ProjectSideBar';
+import { CardComponent } from '@components/project/CardComponent';
+import { Plus } from '@assets/icons/Plus';
+import { threedaycardMockData } from '@apis/cardMockData';
 import { useNavigate } from 'react-router-dom';
 
 function ThreeDayCard() {
@@ -14,7 +14,7 @@ function ThreeDayCard() {
   };
   return (
     <>
-      <Header title='3 Day Project' />
+      <Header title='3day Project' />
       <Container>
         <ProjectSideBar projectType='3day' />
         <CardComponent data={data} />
