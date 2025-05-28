@@ -1,5 +1,8 @@
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Main from './pages/Main';
+import AddCard from './pages/AddCard';
+import QnA from './pages/QnA';
+import React from 'react';
 import ThreeDayDeck from './pages/ThreeDayDeck';
 import ThreeDayCard from './pages/ThreeDayCard';
 import PermanentCard from './pages/PermanentCard';
@@ -13,6 +16,8 @@ function App() {
       <Route path='/3day/card' element={<ThreeDayCard />} />
       <Route path='/permanent' element={<PermanentDeck />} />
       <Route path='/permanent/card' element={<PermanentCard />} />
+      <Route path='/addcard' element={<AddCard />} />
+      <Route path='/qna' element={<QnA />} />
     </Routes>
   );
 }
