@@ -26,14 +26,16 @@ export default MenuBar;
 
 const Flex = styled.div`
   display: flex;
-  gap: 50px;
+  gap: 33px;
   margin-bottom: 24px;
+  margin-left: 50px;
 `;
 
 const MenuBtn = styled.div`
-  height: 88px;
-  text-align: center;
-  font-size: 40px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  font-size: 32px;
   font-weight: 400;
   cursor: pointer;
   border-bottom: ${({ active }) => (active ? '5px solid red' : 'none')};

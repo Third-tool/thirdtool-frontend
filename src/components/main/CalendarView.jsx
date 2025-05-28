@@ -35,9 +35,9 @@ const CalendarWrapper = styled.div`
   background: #333;
   border-radius: 16px;
   padding: 20px;
-  height: 360px;
-  width: 560px;
-  margin-left: 28px;
+  height: 560px;
+  width: 680px;
+  margin-left: 40px;
 `;
 
 const StyledCalendar = styled(Calendar)`

@@ -8,7 +8,7 @@ import CalendarView from './../components/main/CalendarView';
 function Main() {
   return (
     <>
-      <Header />
+      <Header title='The Third Tool' />
       <Margin>
         <MenuBar />
         <Div>
@@ -24,13 +24,12 @@ function Main() {
 
 export default Main;
 
-const Margin = styled.div`
-  margin-left: 50px;
-`;
+const Margin = styled.div``;
 
 const Div = styled.div`
   display: flex;
   margin-bottom: 24px;
+  margin-left: 80px;
 `;
 
 const Wrapper = styled.div`
