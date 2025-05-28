@@ -13,8 +13,7 @@ const GlobalStyle = createGlobalStyle`
     color: #fff;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
+
     font-family: 'Pretendard-Regular';
     }
 
