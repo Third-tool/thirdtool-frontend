@@ -1,19 +1,37 @@
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { ArrowBtn } from '../../assets/icons/ArrowBtn';
 
-export const DeckComponent = () => {
+export const DeckComponent = ({ data, projectType }) => {
   const navigate = useNavigate();
-  const gotoCard = () => {
-    navigate('/3day/card');
+  const gotoCard = (type) => {
+    navigate(`/${type}/card`);
   };
+
+  const isPermanent = projectType === 'permanent';
+
   return (
-    //api 형식대로 재연결 필요
-    <DeckBox onClick={gotoCard}>
-      <DeckTitle>React 이론</DeckTitle>
-      <TimeDiv>
-        <DeckTime>마지막 학습일: N일 전</DeckTime>
-        <DeckTag>1-2일</DeckTag>
-      </TimeDiv>
+    <DeckBox onClick={() => gotoCard(projectType)}>
+      {isPermanent ? (
+        <>
+          <DeckContainer>
+            <DeckTitle>React 이론</DeckTitle>
+            <ArrowBtn />
+          </DeckContainer>
+          <TimeDiv>
+            <DeckTime>마지막 학습일: N일 전</DeckTime>
+            <DeckTag>1-2일</DeckTag>
+          </TimeDiv>
+        </>
+      ) : (
+        <>
+          <DeckTitle>React 이론</DeckTitle>
+          <TimeDiv>
+            <DeckTime>마지막 학습일: N일 전</DeckTime>
+            <DeckTag>1-2일</DeckTag>
+          </TimeDiv>
+        </>
+      )}
     </DeckBox>
   );
 };
@@ -24,11 +42,18 @@ const DeckBox = styled.button`
   height: 140px;
   border-radius: 25px;
   background-color: #1e1e1e;
-  gap: 36px;
   display: flex;
+  gap: 36px;
   flex-direction: column;
   justify-content: center;
   cursor: pointer;
+`;
+
+const DeckContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 25px;
 `;
 
 const DeckTitle = styled.div`

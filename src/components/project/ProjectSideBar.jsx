@@ -4,14 +4,14 @@ import { HomeBtn } from '../../assets/icons/HomeBtn';
 import { ReviewBtn } from '../../assets/icons/ReviewBtn';
 import { useNavigate } from 'react-router-dom';
 
-export const ProjectSideBar = () => {
+export const ProjectSideBar = ({ projectType }) => {
   const navigate = useNavigate();
   const gotoHome = () => {
     navigate('/');
   };
 
-  const gotoDeck = () => {
-    navigate('/3day');
+  const gotoDeck = (type) => {
+    navigate(`/${type}`);
   };
   return (
     <Wrapper>
@@ -19,7 +19,7 @@ export const ProjectSideBar = () => {
         <HomeBtn />
         Home
       </Menu>
-      <Menu onClick={gotoDeck}>
+      <Menu onClick={() => gotoDeck(projectType)}>
         <DecksBtn />
         Decks
       </Menu>

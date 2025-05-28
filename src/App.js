@@ -1,14 +1,18 @@
 import { Route, Routes } from 'react-router-dom';
 import Main from './pages/Main';
-import ThreeDay from './pages/ThreeDay';
+import ThreeDayDeck from './pages/ThreeDayDeck';
 import ThreeDayCard from './pages/ThreeDayCard';
+import PermanentCard from './pages/PermanentCard';
+import PermanentDeck from './pages/PermanentDeck';
 
 function App() {
   return (
     <Routes>
       <Route path='/' element={<Main />} />
-      <Route path='/3day' element={<ThreeDay />} />
+      <Route path='/3day' element={<ThreeDayDeck />} />
       <Route path='/3day/card' element={<ThreeDayCard />} />
+      <Route path='/permanent' element={<PermanentDeck />} />
+      <Route path='/permanent/card' element={<PermanentCard />} />
     </Routes>
   );
 }

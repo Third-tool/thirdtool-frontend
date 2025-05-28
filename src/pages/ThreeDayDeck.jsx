@@ -1,34 +1,39 @@
 import styled from 'styled-components';
 import Header from '../components/Header';
-import { ProjectSideBar } from '../components/project/ProjectSideBar';
-import { CardComponent } from '../components/project/CardComponent';
+import { DeckComponent } from '../components/project/DeckComponent';
 import { Plus } from '../assets/icons/Plus';
-import { threedaycardMockData } from '../apis/cardMockData';
 
-function ThreeDayCard() {
-  const data = threedaycardMockData.data;
+function ThreeDayDeck() {
   return (
     <>
-      <Header title='3 Day Project' />
+      <Header title='3day Project' />
       <Container>
-        <ProjectSideBar projectType='3day' />
-        <CardComponent data={data} />
+        <Wrapper>
+          <DeckComponent data={''} projectType='3day' />
+          <DeckComponent data={''} projectType='3day' />
+        </Wrapper>
+        <AddButtonWrapper>
+          <AddDeckButton>
+            <Plus />덱 추가
+          </AddDeckButton>
+        </AddButtonWrapper>
       </Container>
-      <AddButtonWrapper>
-        <AddDeckButton>
-          <Plus />
-          카드 추가
-        </AddDeckButton>
-      </AddButtonWrapper>
     </>
   );
 }
 
-export default ThreeDayCard;
+export default ThreeDayDeck;
 
 const Container = styled.div`
+  width: 100%;
+`;
+
+const Wrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 30px;
+  justify-content: center;
+  width: 100%;
 `;
 
 const AddButtonWrapper = styled.div`
@@ -42,8 +47,8 @@ const AddDeckButton = styled.button`
   align-items: center;
   justify-content: center;
   gap: 4px;
-  width: 177px;
-  height: 74px;
+  width: 160px;
+  height: 60px;
   font-size: 24px;
   border: none;
   border-radius: 20px;

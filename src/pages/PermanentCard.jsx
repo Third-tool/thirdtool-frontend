@@ -1,17 +1,17 @@
 import styled from 'styled-components';
+import { Plus } from '../assets/icons/Plus';
+import { CardComponent } from '../components/project/CardComponent';
 import Header from '../components/Header';
 import { ProjectSideBar } from '../components/project/ProjectSideBar';
-import { CardComponent } from '../components/project/CardComponent';
-import { Plus } from '../assets/icons/Plus';
-import { threedaycardMockData } from '../apis/cardMockData';
+import { permanentMockData } from '../apis/cardMockData';
 
-function ThreeDayCard() {
-  const data = threedaycardMockData.data;
+function PermanentCard() {
+  const data = permanentMockData.data;
   return (
     <>
-      <Header title='3 Day Project' />
+      <Header title='Permanent Project' />
       <Container>
-        <ProjectSideBar projectType='3day' />
+        <ProjectSideBar projectType='permanent' />
         <CardComponent data={data} />
       </Container>
       <AddButtonWrapper>
@@ -24,7 +24,7 @@ function ThreeDayCard() {
   );
 }
 
-export default ThreeDayCard;
+export default PermanentCard;
 
 const Container = styled.div`
   display: flex;

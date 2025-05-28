@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 import mainLogo from '../assets/images/MainLogo 2.svg';
+import { useNavigate } from 'react-router-dom';
 
 function Header({ title }) {
+  const navigate = useNavigate();
+  const gotoHome = () => {
+    navigate('/');
+  };
   return (
     <Wrapper>
-      <LogoImg src={mainLogo} />
+      <LogoImg onClick={gotoHome} src={mainLogo} />
       <Title>{title}</Title>
     </Wrapper>
   );
@@ -22,6 +27,7 @@ const Wrapper = styled.div`
 const LogoImg = styled.img`
   width: 75px;
   margin-right: 22px;
+  cursor: pointer;
 `;
 
 const Title = styled.div`

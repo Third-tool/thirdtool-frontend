@@ -5,6 +5,9 @@ const SelectProject = () => {
   const goto3day = () => {
     navigate('/3day');
   };
+  const gotoPermanent = () => {
+    navigate('/permanent');
+  };
   return (
     <Gap>
       <ProjectBox>
@@ -14,7 +17,7 @@ const SelectProject = () => {
         </button>
       </ProjectBox>
       <ProjectBox>
-        <button style={{ all: 'unset' }}>
+        <button onClick={gotoPermanent} style={{ all: 'unset' }}>
           <ProjectType>영구 프로젝트</ProjectType>
           <Period>마지막 실행: 5일 전</Period>
         </button>

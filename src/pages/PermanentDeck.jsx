@@ -3,18 +3,14 @@ import Header from '../components/Header';
 import { DeckComponent } from '../components/project/DeckComponent';
 import { Plus } from '../assets/icons/Plus';
 
-function ThreeDay() {
+function PermanentDeck() {
   return (
     <>
-      <Header title='3day Project' />
+      <Header title='Permanent Project' />
       <Container>
         <Wrapper>
-          <DeckComponent />
-          <DeckComponent />
-          <DeckComponent />
-          <DeckComponent />
-          <DeckComponent />
-          <DeckComponent />
+          <DeckComponent data={''} projectType='permanent' />
+          <DeckComponent data={''} projectType='permanent' />
         </Wrapper>
         <AddButtonWrapper>
           <AddDeckButton>
@@ -26,7 +22,7 @@ function ThreeDay() {
   );
 }
 
-export default ThreeDay;
+export default PermanentDeck;
 
 const Container = styled.div`
   width: 100%;
