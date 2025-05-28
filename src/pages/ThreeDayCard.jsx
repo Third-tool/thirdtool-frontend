@@ -4,9 +4,14 @@ import { ProjectSideBar } from '../components/project/ProjectSideBar';
 import { CardComponent } from '../components/project/CardComponent';
 import { Plus } from '../assets/icons/Plus';
 import { threedaycardMockData } from '../apis/cardMockData';
+import { useNavigate } from 'react-router-dom';
 
 function ThreeDayCard() {
   const data = threedaycardMockData.data;
+  const navigate = useNavigate();
+  const goAddCard = () => {
+    navigate('/addcard');
+  };
   return (
     <>
       <Header title='3 Day Project' />
@@ -15,7 +20,7 @@ function ThreeDayCard() {
         <CardComponent data={data} />
       </Container>
       <AddButtonWrapper>
-        <AddDeckButton>
+        <AddDeckButton onClick={goAddCard}>
           <Plus />
           카드 추가
         </AddDeckButton>
