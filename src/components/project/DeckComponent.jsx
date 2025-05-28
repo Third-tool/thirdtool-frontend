@@ -1,8 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const DeckComponent = () => {
+  const navigate = useNavigate();
+  const gotoCard = () => {
+    navigate('/3day/card');
+  };
   return (
-    <DeckBox>
+    //api 형식대로 재연결 필요
+    <DeckBox onClick={gotoCard}>
       <DeckTitle>React 이론</DeckTitle>
       <TimeDiv>
         <DeckTime>마지막 학습일: N일 전</DeckTime>

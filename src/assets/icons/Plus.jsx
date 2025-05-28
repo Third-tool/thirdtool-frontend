@@ -1,4 +1,4 @@
-export const DeckPlus = () => {
+export const Plus = () => {
   return (
     <svg
       width='40'
