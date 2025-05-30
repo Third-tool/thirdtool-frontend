@@ -2,15 +2,19 @@ import styled from 'styled-components';
 import Header from '@components/Header';
 import { DeckComponent } from '@components/project/DeckComponent';
 import { Plus } from '@assets/icons/Plus';
+import { threedayDeckData } from '@apis/cardMockData';
 
 function ThreeDayDeck() {
+  const deckList = threedayDeckData.data;
+
   return (
     <>
       <Header title='3day Project' />
       <Container>
         <Wrapper>
-          <DeckComponent data={''} projectType='3day' />
-          <DeckComponent data={''} projectType='3day' />
+          {deckList.map((deck) => (
+            <DeckComponent key={deck.deckId} data={deck} projectType='3day' />
+          ))}
         </Wrapper>
         <AddButtonWrapper>
           <AddDeckButton>
@@ -34,6 +38,15 @@ const Wrapper = styled.div`
   gap: 30px;
   justify-content: center;
   width: 100%;
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 560px;
+    height: 140px;
+    margin-bottom: 30px;
+    visibility: hidden;
+  }
 `;
 
 const AddButtonWrapper = styled.div`

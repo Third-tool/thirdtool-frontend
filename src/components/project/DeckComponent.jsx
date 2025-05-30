@@ -1,33 +1,40 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { ArrowBtn } from '@assets/icons/ArrowBtn';
 
 export const DeckComponent = ({ data, projectType }) => {
   const navigate = useNavigate();
-  const gotoCard = (type) => {
-    navigate(`/${type}/card`);
+  const location = useLocation();
+
+  const gotoCard = () => {
+    navigate(`/${projectType}/card/${data.deckId}`, {
+      state: {
+        deckName: data.name,
+        source: location.pathname,
+      },
+    });
   };
 
   const isPermanent = projectType === 'permanent';
 
   return (
-    <DeckBox onClick={() => gotoCard(projectType)}>
+    <DeckBox onClick={gotoCard}>
       {isPermanent ? (
         <>
           <DeckContainer>
-            <DeckTitle>React 이론</DeckTitle>
+            <DeckTitle>{data.name}</DeckTitle>
             <ArrowBtn />
           </DeckContainer>
           <TimeDiv>
-            <DeckTime>마지막 학습일: N일 전</DeckTime>
+            <DeckTime>마지막 학습일: {data.recentDay}일 전</DeckTime>
             <DeckTag>1-2일</DeckTag>
           </TimeDiv>
         </>
       ) : (
         <>
-          <DeckTitle>React 이론</DeckTitle>
+          <DeckTitle>{data.name}</DeckTitle>
           <TimeDiv>
-            <DeckTime>마지막 학습일: N일 전</DeckTime>
+            <DeckTime>마지막 학습일: {data.recentDay}일 전</DeckTime>
             <DeckTag>1-2일</DeckTag>
           </TimeDiv>
         </>

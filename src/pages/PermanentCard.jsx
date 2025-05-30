@@ -4,9 +4,10 @@ import { CardComponent } from '@components/project/CardComponent';
 import Header from '@components/Header';
 import { ProjectSideBar } from '@components/project/ProjectSideBar';
 import { permanentMockData } from '@apis/cardMockData';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function PermanentCard() {
+  const location = useLocation();
   const data = permanentMockData.data;
   const navigate = useNavigate();
   const goAddCard = () => {
@@ -17,7 +18,7 @@ function PermanentCard() {
       <Header title='Permanent Project' />
       <Container>
         <ProjectSideBar projectType='permanent' />
-        <CardComponent data={data} />
+        <CardComponent data={data} deckName={location.state.deckName} />
       </Container>
       <AddButtonWrapper>
         <AddDeckButton onClick={goAddCard}>

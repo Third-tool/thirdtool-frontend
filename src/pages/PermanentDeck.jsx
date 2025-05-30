@@ -2,15 +2,22 @@ import styled from 'styled-components';
 import Header from '@components/Header';
 import { DeckComponent } from '@components/project/DeckComponent';
 import { Plus } from '@assets/icons/Plus';
+import { permanentDeckData } from '@apis/cardMockData';
 
 function PermanentDeck() {
+  const deckList = permanentDeckData.data;
   return (
     <>
       <Header title='Permanent Project' />
       <Container>
         <Wrapper>
-          <DeckComponent data={''} projectType='permanent' />
-          <DeckComponent data={''} projectType='permanent' />
+          {deckList.map((deck) => (
+            <DeckComponent
+              key={deck.deckId}
+              data={deck}
+              projectType='permanent'
+            />
+          ))}
         </Wrapper>
         <AddButtonWrapper>
           <AddDeckButton>
@@ -27,13 +34,21 @@ export default PermanentDeck;
 const Container = styled.div`
   width: 100%;
 `;
-
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
   width: 100%;
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 560px;
+    height: 140px;
+    margin-bottom: 30px;
+    visibility: hidden;
+  }
 `;
 
 const AddButtonWrapper = styled.div`

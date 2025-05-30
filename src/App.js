@@ -11,9 +11,9 @@ function App() {
     <Routes>
       <Route path='/' element={<Main />} />
       <Route path='/3day' element={<ThreeDayDeck />} />
-      <Route path='/3day/card' element={<ThreeDayCard />} />
+      <Route path='/3day/card/:deckId' element={<ThreeDayCard />} />
       <Route path='/permanent' element={<PermanentDeck />} />
-      <Route path='/permanent/card' element={<PermanentCard />} />
+      <Route path='/permanent/card/:deckId' element={<PermanentCard />} />
       <Route path='/addcard' element={<AddCard />} />
       <Route path='/qna' element={<QnA />} />
     </Routes>
