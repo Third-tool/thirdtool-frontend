@@ -23,4 +23,18 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
+// const GlobalStyle = createGlobalStyle`
+//   body {
+//     background-color: #000;
+//     color: #fff;
+//     margin: 0;
+//     padding: 0;
+
+//     font-family: 'IBM Plex Sans KR', sans-serif;
+//   }
+
+//   * {
+//     box-sizing: border-box;
+//     color: inherit;
+//   }
 export default GlobalStyle;
