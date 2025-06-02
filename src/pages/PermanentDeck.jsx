@@ -3,48 +3,42 @@ import Header from '@components/Header';
 import { DeckComponent } from '@components/project/DeckComponent';
 import { Plus } from '@assets/icons/Plus';
 import { useState } from 'react';
-import { CloseButton } from '@assets/icons/CloseButton';
+import AddDeckModal from '@components/project/AddDeckModal';
 
 function PermanentDeck() {
   const [decks, setDecks] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newDeckTitle, setNewDeckTitle] = useState('');
+
+  const handleAddDeck = () => {
+    if (newDeckTitle.trim()) {
+      setDecks([...decks, newDeckTitle]);
+      setNewDeckTitle('');
+      setIsModalOpen(false);
+    }
+  };
 
   return (
     <>
       <Header title='Permanent Project' />
       <Container>
         <Wrapper>
-          <DeckComponent data={''} projectType='permanent' />
-          <DeckComponent data={''} projectType='permanent' />
+          {decks.map((title, index) => (
+            <DeckComponent key={index} data={title} projectType='3day' />
+          ))}
         </Wrapper>
         <AddButtonWrapper>
-          <AddDeckButton>
+          <AddDeckButton onClick={() => setIsModalOpen(true)}>
             <Plus />덱 추가
           </AddDeckButton>
         </AddButtonWrapper>
-
         {isModalOpen && (
-          <ModalOverlay>
-            <ModalBox>
-              <TopContainer>
-                <AddDeckTitle>덱 추가</AddDeckTitle>
-                <CloseButtonWrapper>
-                  <CloseButton onClick={() => setIsModalOpen(false)} />
-                </CloseButtonWrapper>
-              </TopContainer>
-
-              <Input
-                placeholder='추가할 덱의 제목을 입력하세요'
-                value={newDeckTitle}
-                onChange={(e) => setNewDeckTitle(e.target.value)}
-              />
-              <ModalButtonWrapper>
-                <AddDeckButton onClick={handleAddDeck}>
-                  <Plus />덱 추가
-                </AddDeckButton>
-              </ModalButtonWrapper>
-            </ModalBox>
-          </ModalOverlay>
+          <AddDeckModal
+            value={newDeckTitle}
+            onChange={(e) => setNewDeckTitle(e.target.value)}
+            onClose={() => setIsModalOpen(false)}
+            onAdd={handleAddDeck}
+          />
         )}
       </Container>
     </>
