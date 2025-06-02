@@ -4,15 +4,30 @@ import { DeckComponent } from '@components/project/DeckComponent';
 import { Plus } from '@assets/icons/Plus';
 import { permanentDeckData } from '@apis/cardMockData';
 import AddDeckModal from '@components/project/AddDeckModal';
+import { useState } from 'react';
 
 function PermanentDeck() {
-  const deckList = permanentDeckData.data;
+  const [decks, setDecks] = useState(permanentDeckData.data);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [newDeckTitle, setNewDeckTitle] = useState('');
+
+  const handleAddDeck = (newDeckName) => {
+    if (newDeckTitle.trim()) {
+      const newDeck = {
+        deckId: Date.now(),
+        name: newDeckName,
+        recentDay: 0,
+      };
+      setDecks([...decks, newDeck]);
+      setIsModalOpen(false);
+    }
+  };
   return (
     <>
       <Header title='Permanent Project' />
       <Container>
         <Wrapper>
-          {deckList.map((deck) => (
+          {decks.map((deck) => (
             <DeckComponent
               key={deck.deckId}
               data={deck}

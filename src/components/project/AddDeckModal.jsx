@@ -19,7 +19,7 @@ const AddDeckModal = ({ value, onChange, onClose, onAdd }) => {
           onChange={onChange}
         />
         <ModalButtonWrapper>
-          <AddDeckButton onClick={onAdd}>
+          <AddDeckButton onClick={() => onAdd(value)}>
             <Plus />덱 추가
           </AddDeckButton>
         </ModalButtonWrapper>

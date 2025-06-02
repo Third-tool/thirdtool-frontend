@@ -7,15 +7,18 @@ import AddDeckModal from '@components/project/AddDeckModal';
 import { threedayDeckData } from '@apis/cardMockData';
 
 function ThreeDayDeck() {
-  const deckList = threedayDeckData.data;
-  const [decks, setDecks] = useState([]);
+  const [decks, setDecks] = useState(threedayDeckData.data);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newDeckTitle, setNewDeckTitle] = useState('');
 
-  const handleAddDeck = () => {
+  const handleAddDeck = (newDeckName) => {
     if (newDeckTitle.trim()) {
-      setDecks([...decks, newDeckTitle]);
-      setNewDeckTitle('');
+      const newDeck = {
+        deckId: Date.now(),
+        name: newDeckName,
+        recentDay: 0,
+      };
+      setDecks([...decks, newDeck]);
       setIsModalOpen(false);
     }
   };
@@ -25,7 +28,7 @@ function ThreeDayDeck() {
       <Header title='3day Project' />
       <Container>
         <Wrapper>
-          {deckList.map((deck) => (
+          {decks.map((deck) => (
             <DeckComponent key={deck.deckId} data={deck} projectType='3day' />
           ))}
         </Wrapper>

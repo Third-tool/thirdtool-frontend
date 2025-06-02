@@ -27,7 +27,9 @@ export const DeckComponent = ({ data, projectType }) => {
           </DeckContainer>
           <TimeDiv>
             <DeckTime>마지막 학습일: {data.recentDay}일 전</DeckTime>
-            <DeckTag>1-2일</DeckTag>
+            <DeckTag>
+              {data.recentDay}-{data.recentDay + 1}일
+            </DeckTag>
           </TimeDiv>
         </>
       ) : (
@@ -35,7 +37,9 @@ export const DeckComponent = ({ data, projectType }) => {
           <DeckTitle>{data.name}</DeckTitle>
           <TimeDiv>
             <DeckTime>마지막 학습일: {data.recentDay}일 전</DeckTime>
-            <DeckTag>1-2일</DeckTag>
+            <DeckTag>
+              {data.recentDay}-{data.recentDay + 1}일
+            </DeckTag>
           </TimeDiv>
         </>
       )}
