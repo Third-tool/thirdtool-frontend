@@ -2,13 +2,19 @@ import styled from 'styled-components';
 import leftArrow from '@assets/images/left_arrow.svg';
 import galleryLogo from '@assets/images/gallery.svg';
 import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function AddCard() {
+  const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const [previewImage, setPreviewImage] = useState(null);
 
   const handleImageButtonClick = () => {
     fileInputRef.current.click();
+  };
+
+  const goBack = () => {
+    navigate(-1);
   };
 
   const handleFileChange = async (event) => {
@@ -37,7 +43,7 @@ function AddCard() {
   return (
     <>
       <Header>
-        <LeftArrow src={leftArrow} />
+        <LeftArrow src={leftArrow} onClick={goBack} />
         <Title>카드 추가</Title>
       </Header>
 
