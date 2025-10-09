@@ -6,6 +6,7 @@ import PermanentCard from '@pages/PermanentCard';
 import PermanentDeck from '@pages/PermanentDeck';
 import AddCard from '@pages/AddCard';
 import QnA from '@pages/QnA';
+import Login from '@pages/Login';
 function App() {
   return (
     <Routes>
@@ -16,6 +17,7 @@ function App() {
       <Route path='/permanent/card' element={<PermanentCard />} />
       <Route path='/addcard' element={<AddCard />} />
       <Route path='/qna' element={<QnA />} />
+      <Route path='/login' element={<Login />} />
     </Routes>
   );
 }
