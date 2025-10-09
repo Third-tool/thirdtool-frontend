@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 import mainLogo from '@assets/images/MainLogo 1.svg';
 import leftArrow from '@assets/images/left_arrow.svg';
+import { useNavigate } from 'react-router-dom';
 
 function QnA() {
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <>
       <Header>
-        <LeftArrow src={leftArrow} />
+        <LeftArrow src={leftArrow} onClick={goBack} />
         <LogoImg src={mainLogo} />
         <Title>3 Day Project</Title>
       </Header>
