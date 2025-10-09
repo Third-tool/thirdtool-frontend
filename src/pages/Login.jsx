@@ -76,7 +76,7 @@ export default Login;
 
 const LogoWrapper = styled.div`
   margin-top: 150px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
