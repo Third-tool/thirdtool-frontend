@@ -1,29 +1,75 @@
 import styled from 'styled-components';
 import { RiKakaoTalkFill } from 'react-icons/ri';
 import { SiNaver } from 'react-icons/si';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import mainLogo from '@assets/images/MainLogo 2.svg';
+import { doLogin } from '@apis/login';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const navigate = useNavigate();
+
+  const KAKAO_CLIENT_ID = process.env.REACT_APP_KAKAO_CLIENT_ID;
+  const KAKAO_REDIRECT_URI = process.env.REACT_APP_KAKAO_REDIRECT_URI;
+
+  const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=${KAKAO_REDIRECT_URI}&response_type=code`;
+
+  const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_CLIENT_ID;
+  const NAVER_REDIRECT_URI = process.env.REACT_APP_NAVER_REDIRECT_URI;
+
+  const naverAuthUrl = `https://nid.naver.com/oauth2.0/authorize?client_id=${NAVER_CLIENT_ID}&redirect_uri=${NAVER_REDIRECT_URI}&response_type=code&state=test`;
+
   const [inputs, setInputs] = useState({
     id: '',
     password: '',
   });
 
+  useEffect(() => {
+    console.log('Component mounted. Kakao Client ID:', KAKAO_CLIENT_ID);
+    console.log('Kakao Redirect URI:', KAKAO_REDIRECT_URI);
+  }, []);
+
+  useEffect(() => {
+    console.log('Component mounted. Naver Client ID:', NAVER_CLIENT_ID);
+    console.log('Naver Redirect URI:', NAVER_REDIRECT_URI);
+  }, []);
+
   const { id, password } = inputs;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setInputs({
-      ...inputs,
+    setInputs((prevInputs) => ({
+      ...prevInputs,
       [name]: value,
-    });
+    }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('ID:', id);
-    console.log('Password:', password);
+    if (!id || !password) {
+      alert('아이디와 비밀번호를 모두 입력해주세요.');
+      return;
+    }
+    try {
+      const userData = await doLogin({ username: id, password });
+      console.log('로그인 성공!', userData);
+      navigate('/');
+    } catch (error) {
+      console.error('로그인 실패:', error);
+      alert('아이디 또는 비밀번호가 일치하지 않습니다.');
+    }
+  };
+
+  const handleKakaoLogin = () => {
+    window.location.href = kakaoAuthUrl;
+  };
+
+  const handleNaverLogin = () => {
+    window.location.href = naverAuthUrl;
+  };
+
+  const handleSignUp = () => {
+    navigate('/signup');
   };
 
   return (
@@ -37,7 +83,7 @@ function Login() {
           <Label htmlFor='loginId'>아이디</Label>
           <Input
             id='loginId'
-            name='id' // name 속성 추가
+            name='id'
             type='text'
             value={id}
             required
@@ -47,7 +93,7 @@ function Login() {
           <Label htmlFor='loginPassword'>비밀번호</Label>
           <Input
             id='loginPassword'
-            name='password' // name 속성 추가
+            name='password'
             type='password'
             value={password}
             required
@@ -56,16 +102,18 @@ function Login() {
           />
           <Button type='submit'>로그인</Button>
           <SocialButtonWrapper>
-            <KakaoButton>
+            <KakaoButton type='button' onClick={handleKakaoLogin}>
               <RiKakaoTalkFill size='26' />
               카카오로 로그인하기
             </KakaoButton>
-            <NaverButton>
+            <NaverButton type='button' onClick={handleNaverLogin}>
               <SiNaver size='20' />
               네이버로 로그인하기
             </NaverButton>
           </SocialButtonWrapper>
-          <SignUpButton type='button'>회원가입</SignUpButton>
+          <SignUpButton type='button' onClick={handleSignUp}>
+            회원가입
+          </SignUpButton>
         </Form>
       </FormWrapper>
     </>
@@ -76,7 +124,7 @@ export default Login;
 
 const LogoWrapper = styled.div`
   margin-top: 150px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
