@@ -12,5 +12,5 @@
       "@hooks/*": ["src/hooks/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "src/stores"]
 }
