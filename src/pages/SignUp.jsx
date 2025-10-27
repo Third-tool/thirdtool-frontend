@@ -45,7 +45,6 @@ function SignUp() {
     }
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!id || !password || !confirmPassword || !email || !nickname) {
