@@ -1,16 +1,23 @@
 import styled from 'styled-components';
 import mainLogo from '@assets/images/MainLogo 2.svg';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function Header({ title }) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
   const gotoHome = () => {
     navigate('/');
   };
+  const goToLogin = () => {
+    navigate('/login');
+  };
+  
   return (
     <Wrapper>
       <LogoImg onClick={gotoHome} src={mainLogo} />
       <Title>{title}</Title>
+      {isLoggedIn ? <LoginTitle>로그아웃</LoginTitle> : <LoginTitle onClick={goToLogin}>로그인</LoginTitle>}
     </Wrapper>
   );
 }
@@ -33,4 +40,11 @@ const LogoImg = styled.img`
 const Title = styled.div`
   font-size: 50px;
   font-weight: 400;
+`;
+
+const LoginTitle = styled.div`
+  margin-left: auto;
+  margin-right: 100px;
+  font-size: 20px;
+  cursor: pointer;
 `;
