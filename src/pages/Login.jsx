@@ -72,10 +72,14 @@ function Login() {
     navigate('/signup');
   };
 
+  const handleGoSelect = () => {
+    navigate('/SelectProject');
+  };
+
   return (
     <>
       <LogoWrapper>
-        <LogoImage src={mainLogo} alt='Logo' />
+        <LogoImage src={mainLogo} alt='Logo' onClick={handleGoSelect} />
         <TTT>The Third Tool</TTT>
       </LogoWrapper>
       <FormWrapper>
@@ -135,6 +139,7 @@ const LogoWrapper = styled.div`
 const LogoImage = styled.img`
   width: 60px;
   height: 60px;
+  cursor: pointer;
 `;
 
 const TTT = styled.h1`
