@@ -4,9 +4,10 @@ import { ProjectSideBar } from '@components/project/ProjectSideBar';
 import { CardComponent } from '@components/project/CardComponent';
 import { Plus } from '@assets/icons/Plus';
 import { threedaycardMockData } from '@apis/cardMockData';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function ThreeDayCard() {
+  const location = useLocation();
   const data = threedaycardMockData.data;
   const navigate = useNavigate();
   const goAddCard = () => {
@@ -17,7 +18,7 @@ function ThreeDayCard() {
       <Header title='3day Project' />
       <Container>
         <ProjectSideBar projectType='3day' />
-        <CardComponent data={data} />
+        <CardComponent data={data} deckName={location.state.deckName} />
       </Container>
       <AddButtonWrapper>
         <AddDeckButton onClick={goAddCard}>

@@ -2,29 +2,37 @@ import styled from 'styled-components';
 import Header from '@components/Header';
 import { DeckComponent } from '@components/project/DeckComponent';
 import { Plus } from '@assets/icons/Plus';
-import { useState } from 'react';
+import { permanentDeckData } from '@apis/cardMockData';
 import AddDeckModal from '@components/project/AddDeckModal';
+import { useState } from 'react';
 
 function PermanentDeck() {
-  const [decks, setDecks] = useState([]);
+  const [decks, setDecks] = useState(permanentDeckData.data);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newDeckTitle, setNewDeckTitle] = useState('');
 
-  const handleAddDeck = () => {
+  const handleAddDeck = (newDeckName) => {
     if (newDeckTitle.trim()) {
-      setDecks([...decks, newDeckTitle]);
-      setNewDeckTitle('');
+      const newDeck = {
+        deckId: Date.now(),
+        name: newDeckName,
+        recentDay: 0,
+      };
+      setDecks([...decks, newDeck]);
       setIsModalOpen(false);
     }
   };
-
   return (
     <>
       <Header title='Permanent Project' />
       <Container>
         <Wrapper>
-          {decks.map((title, index) => (
-            <DeckComponent key={index} data={title} projectType='3day' />
+          {decks.map((deck) => (
+            <DeckComponent
+              key={deck.deckId}
+              data={deck}
+              projectType='permanent'
+            />
           ))}
         </Wrapper>
         <AddButtonWrapper>
@@ -50,13 +58,21 @@ export default PermanentDeck;
 const Container = styled.div`
   width: 100%;
 `;
-
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
   width: 100%;
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 560px;
+    height: 140px;
+    margin-bottom: 30px;
+    visibility: hidden;
+  }
 `;
 
 const AddButtonWrapper = styled.div`
