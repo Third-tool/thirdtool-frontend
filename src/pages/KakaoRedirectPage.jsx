@@ -1,43 +1,55 @@
-import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import login from '../apis/auth.js';
-import useAuthStore from '../stores/useAuthStore';
+import React, { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
-const KakaoRedirectPage = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { setTokens } = useAuthStore();
+const BASE_URL = import.meta.env.VITE_BACKEND_API_BASE_URL;
 
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const code = searchParams.get('code');
+export default function KakaoRedirectPage() {
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
 
-    if (!code) {
-      alert('인가코드 없음');
-      navigate('/login');
-      return;
-    }
+    useEffect(() => {
+        const code = searchParams.get("code");
+        if (!code) {
+            alert("인가 코드가 없습니다.");
+            navigate("/login");
+            return;
+        }
 
-    console.log('보내는 code:', code);
+        async function exchangeCodeForToken() {
+            try {
+                const res = await fetch(`${BASE_URL}/social/login/kakao`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ code }),
+                });
 
-    const kakaoLogin = async () => {
-      try {
-        console.log('인가코드:', code);
-        const { accessToken, refreshToken } = await login(code);
-        setTokens(accessToken, refreshToken);
-        navigate('/');
-        console.log(accessToken, refreshToken);
-      } catch (err) {
-        console.error(err);
-        alert('로그인 실패');
-        navigate('/login');
-      }
-    };
+                if (!res.ok) throw new Error("토큰 발급 실패");
 
-    kakaoLogin();
-  }, [location.search, navigate]);
+                const data = await res.json();
+                localStorage.setItem("accessToken", data.accessToken);
+                localStorage.setItem("refreshToken", data.refreshToken);
 
-  return <>로딩중 ...</>;
-};
+                alert("카카오 로그인 성공!");
+                navigate("/home");
+            } catch (err) {
+                alert("로그인 실패: " + err.message);
+                navigate("/login");
+            }
+        }
 
-export default KakaoRedirectPage;
+        exchangeCodeForToken();
+    }, [navigate, searchParams]);
+
+    return (
+        <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100vh",
+            color: "white",
+            backgroundColor: "#121212",
+        }}>
+            <h3>카카오 로그인 처리 중...</h3>
+        </div>
+    );
+}
